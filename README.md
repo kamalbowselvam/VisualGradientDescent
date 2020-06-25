@@ -1,6 +1,8 @@
 # VisualGradientDescent
-Explanation of gradient descent algorithm
+Gradient descent algorith
 Simple Implementation using python
+
+https://en.wikipedia.org/wiki/Gradient_descent
 
 
 ![Gradient Descent](contour.gif)
