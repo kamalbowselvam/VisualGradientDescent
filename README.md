@@ -3,6 +3,6 @@ Explanation of gradient descent algorithm
 Simple Implementation using python
 
 
-(contour.gif)
+[contour](contour.gif)
 
 
