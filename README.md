@@ -6,4 +6,4 @@ Simple Implementation using python
 ![Gradient Descent](contour.gif)
 
 
-![Linear Regression](contour.gif)
+![Linear Regression](fit.gif)
