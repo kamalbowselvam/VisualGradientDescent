@@ -39,8 +39,8 @@ def gradientDescent(m,c,x,y):
     i = 1
     threshold = 999999
     while threshold > 10e-20:
-        d_m = (np.sum((y - hypothesis(x,m,c)) * x)) * (-2/len(x))
-        d_c = (np.sum(y - hypothesis(x,m,c))) *  (-2/len(x))
+        d_m = (np.sum((hypothesis(x,m,c) - y ) * x)) * (2/len(x))
+        d_c = (np.sum(hypothesis(x,m,c) - y )) *  (2/len(x))
         old_m = m
         all_m.append(m)
         all_c.append(c)
@@ -50,3 +50,17 @@ def gradientDescent(m,c,x,y):
         i = i +1
         print(m,c, threshold)
     return all_m, all_c
+
+
+
+if __name__ == '__main__':
+
+    data = randomDataGenerator()
+    print(data[1])
+    import matplotlib.pyplot as plt 
+    plt.plot(data[0],data[1], '*')
+    plt.xlabel("x")
+    plt.ylabel("y")
+    plt.title("Synthetic Data")
+    plt.show()
+    print('function was called')

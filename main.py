@@ -36,8 +36,8 @@ if __name__ == "__main__":
 
     dataX, dataY, theta0_init, theta1_init = randomDataGenerator()
 
-    fig = plt.figure()
-    ax = fig.gca(projection='3d')
+#    fig = plt.figure()
+#    ax = fig.add_subplot(projection = '3d')
 
     theta0_grid = np.linspace(-10, 15, 101)
     theta1_grid = np.linspace(-10, 15, 101)
@@ -48,12 +48,12 @@ if __name__ == "__main__":
 
     X, Y = np.meshgrid(theta0_grid, theta1_grid)
     # Plot the surface.
-    surf = ax.plot_surface(X, Y, Z, cmap=cm.coolwarm, linewidth=0, antialiased=False)
-    plt.show()
+#    surf = ax.plot_surface(X, Y, Z, cmap=cm.coolwarm, linewidth=0, antialiased=False)
+#    plt.show()
 
     all_m, all_c = gradientDescent(m=-10, c=10, x=dataX, y=dataY)
 
-
+    """
 
     fig = plt.figure()
     ax = plt.axes()
@@ -65,17 +65,25 @@ if __name__ == "__main__":
     line, = ax.plot([], [],'r-', lw=2)
     annotation = ax.text(-1, 700000, '')
     annotation.set_animated(True)
-    plt.close()
+#    plt.close()
+
 
     
-    anim = animation.FuncAnimation(fig, animate, init_func=init, frames=2000, interval=0, blit=True)
-    anim.save('animation2.gif', writer='imagemagick', fps=30)
+    anim = animation.FuncAnimation(fig, animate, init_func=init, frames=2000, interval=1, blit=True)
+  
+    writer = animation.PillowWriter(fps=30,
+                                    metadata=dict(artist='Me'),
+                                    bitrate=1800)
+    anim.save('contour.gif', writer=writer) 
     
-    """
+    #anim.save('animation2.gif', writer='imagemagick', fps=30)
+    
+    plt.show()
+    """ 
 
-    fig = plt.figure()
+    fig = plt.figure(figsize=(10, 3))
     ax = plt.axes()
-    plt.title('Contour Plot for Grandient Descent Convergence')
+    plt.title('Contour Plot for Grandient Descent Convergenc')
     plt.xlabel('x')
     plt.ylabel('y')
 
@@ -84,9 +92,11 @@ if __name__ == "__main__":
     line2, = ax.plot([], [], 'r-', lw=2)
     annotation = ax.text(-1, 700000, '')
     annotation.set_animated(True)
-    plt.close()
+    writer = animation.PillowWriter(fps=30,
+                                    metadata=dict(artist='Me'),
+                                    bitrate=1800)
 
-    anim = animation.FuncAnimation(fig, animate_line, init_func=init_line, frames=5000, interval=500, blit=True)
-    anim.save('animation_plot.gif', writer='imagemagick', fps=30)
 
-    """
+    anim = animation.FuncAnimation(fig, animate_line, init_func=init_line, frames=2000, interval=1, blit=True)
+    anim.save('animation_plot.gif', writer=writer) 
+    plt.show()
